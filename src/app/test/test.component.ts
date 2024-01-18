@@ -29,6 +29,15 @@ import { CommonModule } from '@angular/common';
             // using[ngStyle] directive
             <h2 [ngStyle]="titleStyles">Style Binding 3</h2>
 
+            // Using event binding
+            
+            // Use interpolation and bind to greeting property
+            {{greeting}}
+            <button (click)="onClick($event)">Greeting</button>
+
+            <button (click)="greeting='Welcome Mahabir'">Greet</button>
+            
+
             <h2>{{2+2}}</h2>
             <h2>{{"Welcome" + name}}</h2>
             <h2>{{name.length}}</h2>
@@ -84,6 +93,20 @@ export class TestComponent implements OnInit {
     color:"blue",
     fontStyle:"italic" //cannot use hypen so must use camelcase
   }
+
+  //  onClick(){
+  //     console.log('Welcome to Codevolution!')
+  //     this.greeting = 'Welcome to Codevolution!'
+  // }
+
+  onClick(event: any){
+    console.log(event)
+    // this.greeting = 'Welcome to Codevolution!'
+    this.greeting = event.type
+}
+
+
+  public greeting ="";
   // assigning global variable
   public siteUrl: string;
 
