@@ -2,16 +2,18 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { style } from '@angular/animations';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-test',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   template: `<h2>
             Welcome {{name}}
             </h2>
             
+            // Using property binding using square brackets - []
             <h2 class="text-success">Codevolution</h2>
             // Using class binding
             <h2 [class]="successClass">Codevolution</h2>
@@ -29,7 +31,7 @@ import { CommonModule } from '@angular/common';
             // using[ngStyle] directive
             <h2 [ngStyle]="titleStyles">Style Binding 3</h2>
 
-            // Using event binding
+            // Using event binding using parenthesis()
             
             // Use interpolation and bind to greeting property
             {{greeting}}
@@ -41,6 +43,10 @@ import { CommonModule } from '@angular/common';
             <input #myInput type="text">
             <button (click)="logMessage(myInput.value)">Log</button>
             <button (click)="logMessage(myInput)">Logging</button>
+
+            // Using 2 -way binding
+            <input [(ngModel)]="name" type="text">
+            {{name}}
 
             <h2>{{2+2}}</h2>
             <h2>{{"Welcome" + name}}</h2>
@@ -76,7 +82,7 @@ import { CommonModule } from '@angular/common';
 export class TestComponent implements OnInit {
 
   // declare the variable name
-  public name = "Tiger";
+  public name = "";
 
   public successClass="text-success";
   public hasError = true;
