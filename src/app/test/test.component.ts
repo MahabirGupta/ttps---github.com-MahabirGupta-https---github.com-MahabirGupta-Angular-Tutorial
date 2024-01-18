@@ -37,6 +37,10 @@ import { CommonModule } from '@angular/common';
 
             <button (click)="greeting='Welcome Mahabir'">Greet</button>
             
+            // Template Reference Variable
+            <input #myInput type="text">
+            <button (click)="logMessage(myInput.value)">Log</button>
+            <button (click)="logMessage(myInput)">Logging</button>
 
             <h2>{{2+2}}</h2>
             <h2>{{"Welcome" + name}}</h2>
@@ -105,6 +109,9 @@ export class TestComponent implements OnInit {
     this.greeting = event.type
 }
 
+ logMessage(value: any){
+    console.log(value);
+}
 
   public greeting ="";
   // assigning global variable
